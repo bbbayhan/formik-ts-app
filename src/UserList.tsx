@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {useQuery} from 'react-query';
+import {useQuery, useMutation, useQueryClient} from 'react-query';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UserForm from './UserForm';
 import axios from 'axios';
@@ -8,18 +8,26 @@ import axios from 'axios';
 
 function UserList(props: any) {
     const [isOpen, setIsOpen] = useState(false);
+    const queryClient = useQueryClient();
 
-    const { data=[] } = useQuery("fetchUsers", async () => {
-        const { data } =  await axios.get("http://localhost:5000/users/")
-        return data
-      }, { cacheTime: Infinity });
+  const { data=[] } = useQuery("fetchUsers", async () => {
+      const { data } =  await axios.get("http://localhost:5000/users/")
+      return data
+    }, { cacheTime: Infinity });
 
   const handleOnClick = () =>{
     setIsOpen(true); 
   }
 
   const deleteUser = async (id: any) =>{
-    await axios.delete("http://localhost:5000/users/" + id);
+    return await axios.delete("http://localhost:5000/users/" + id);
+  }
+
+  const { mutateAsync } = useMutation(deleteUser);
+
+  const remove = async (id: any) => {
+    await mutateAsync(id);
+    queryClient.invalidateQueries("fetchUsers");
   }
 
   return (
@@ -35,7 +43,7 @@ function UserList(props: any) {
                   <li key={user.id} onClick={()=>props.onClickHandler(user)}>
                     {user.firstName} 
                   </li>
-                  <DeleteIcon onClick={()=>deleteUser(user.id)}/>
+                  <DeleteIcon onClick={()=>remove(user.id)}/>
                 </div>
               )})
             }
