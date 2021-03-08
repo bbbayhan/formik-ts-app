@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "firstName": "Burcy",
+      "id": 1
+    },
+    {
+      "firstName": "hello",
+      "id": 2
+    },
+    {
+      "firstName": "Oia",
+      "id": 3
+    },
+    {
+      "firstName": "Selected",
+      "id": 4
+    }
+  ]
+}
