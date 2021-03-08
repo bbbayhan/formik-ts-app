@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { QueryClient, QueryClientProvider} from "react-query";
-import { BrowserRouter, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import { ReactQueryDevtools,  } from 'react-query-devtools'
 import './App.css';
 import User from "./User";
@@ -24,12 +24,8 @@ function App() {
       <BrowserRouter>
         <Switch>
             <div className="App">
-              <Route exact path="/">
-                <UserList onClickHandler={openUser}/>
-              </Route>
-              <Route path="/user-profile">
-                <User selectedUser={selectedUser} selectedUserID={selectedUserID}/> 
-              </Route>
+              <Route exact path="/" render={()=> (<UserList onClickHandler={openUser}/>)}/>
+              <Route path={"/user-profile/:id"} render={() => (<User selectedUser={selectedUser} selectedUserID={selectedUserID} />)}/>
               <Route path="/user-form" component={UserForm}/>
             </div>
           </Switch>

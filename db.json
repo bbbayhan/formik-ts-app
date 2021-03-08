@@ -89,6 +89,16 @@
       "companyName": "hello",
       "companyYear": "2000",
       "id": 9
+    },
+    {
+      "firstName": "Beste",
+      "lastName": "Bayhan",
+      "email": "bestebbayhan@gmail.com",
+      "age": "20",
+      "birthday": "12092021",
+      "companyName": "hello",
+      "companyYear": "2000",
+      "id": 10
     }
   ]
 }

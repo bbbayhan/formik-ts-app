@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 function UserList(props: any) {
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const { data=[] } = useQuery("fetchUsers", async () => {
       const { data } =  await axios.get("http://localhost:5000/users/")
@@ -35,9 +35,11 @@ function UserList(props: any) {
             {data.map((user: any) => {
               return(
                 <div>
-                  <li key={user.id} onClick={()=>props.onClickHandler(user)}>
-                    {user.firstName} 
-                  </li>
+                  <Link to={"/user-profile/:"+ user.id}>
+                    <li key={user.id} onClick={()=>props.onClickHandler(user)}>
+                      {user.firstName} 
+                    </li>
+                  </Link>
                   <DeleteIcon onClick={()=>remove(user.id)}/>
                 </div>
               )})
