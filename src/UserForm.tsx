@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Form, Formik} from 'formik';
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 import FirstPage from "./forms/FirstPage";
@@ -7,6 +8,7 @@ import SecondPage from "./forms/SecondPage";
 import ThirdPage from "./forms/ThirdPage";
 import ForthPage from "./forms/ForthPage";
 import {validationSchema} from "./validations";
+import UserList from "./UserList";
 
 const steps = ['First Page', 'Second Page', 'Third Page'];
 const formId = "form";
@@ -18,10 +20,9 @@ const renderStepContent = (step: number, handleChange:any, values: any) => {
     case 1:
       return <SecondPage handleChange={handleChange} values={values} />;
     case 2:
-      return <ThirdPage handleChange={handleChange} values={values} />;
+      return <ThirdPage handleChange={handleChange} values={values} />; 
     default:
-      return <div>Not Found</div>;
-  }
+      return <Link to="/" component={UserList}></Link>;  }
 }
 
 function UserForm() {
@@ -67,7 +68,7 @@ function UserForm() {
       >
         {({ isSubmitting, handleChange, values }) => (
           <Form className="App" id={formId}>
-            {activeStep !== 0 && (
+            {(activeStep !== 0 && activeStep !== 3)  && (
                 <button className="previous" type="button" onClick={handleBack}>&laquo;</button>
               )}
             {renderStepContent(activeStep, handleChange, values)}

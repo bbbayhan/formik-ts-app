@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { Link} from "react-router-dom";
 import './App.css';
 import {useQuery, useMutation, useQueryClient} from 'react-query';
 import DeleteIcon from '@material-ui/icons/Delete';
-import UserForm from './UserForm';
 import axios from 'axios';
 
 
 function UserList(props: any) {
-    const [isOpen, setIsOpen] = useState(false);
     const queryClient = useQueryClient();
 
   const { data=[] } = useQuery("fetchUsers", async () => {
       const { data } =  await axios.get("http://localhost:5000/users/")
       return data
     }, { cacheTime: Infinity });
-
-  const handleOnClick = () =>{
-    setIsOpen(true); 
-  }
 
   const deleteUser = async (id: any) =>{
     return await axios.delete("http://localhost:5000/users/" + id);
@@ -32,10 +27,10 @@ function UserList(props: any) {
 
   return (
     <div className="App">
-    {isOpen? 
-        <UserForm/> : (
         <div>
-        <button type="button" onClick={handleOnClick}>New User</button>
+        <Link to='/user-form'>
+          New User
+        </Link>
         <ul>
             {data.map((user: any) => {
               return(
@@ -49,8 +44,6 @@ function UserList(props: any) {
             }
         </ul>
         </div>
-        )
-      }
       </div>
   );
 }
