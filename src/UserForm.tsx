@@ -68,21 +68,23 @@ function UserForm() {
       >
         {({ isSubmitting, handleChange, values }) => (
           <Form className="App" id={formId}>
-            {(activeStep !== 0 && activeStep !== 3)  && (
-                <button className="previous" type="button" onClick={handleBack}>&laquo;</button>
-              )}
-            {renderStepContent(activeStep, handleChange, values)}
-            {isLastStep? 
-              <ForthPage/> : 
-              <button
-                disabled={isSubmitting}
-                className="next"
-                type="submit"
-                color="primary"
-              >
-                &raquo;
-              </button>
-            } 
+              <div className="App">
+              {(activeStep !== 0 && activeStep !== 3)  && (
+                  <button className="previous" type="button" onClick={handleBack}>&laquo;</button>
+                )}
+              {renderStepContent(activeStep, handleChange, values)}
+              {isLastStep? 
+                <ForthPage/> : 
+                <button
+                  disabled={isSubmitting}
+                  className="next"
+                  type="submit"
+                  color="primary"
+                >
+                  &raquo;
+                </button>
+              } 
+            </div>
           </Form>
         )}
       </Formik>

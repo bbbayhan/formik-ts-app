@@ -2,6 +2,7 @@ import React from 'react';
 import { Link} from "react-router-dom";
 import './App.css';
 import {useQuery, useMutation, useQueryClient} from 'react-query';
+import { Button, Grid, ListItemText } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
 
@@ -26,27 +27,33 @@ function UserList(props: any) {
   }
 
   return (
-    <div className="App">
-        <div>
+    <Grid container direction="row-reverse" >
+      <Grid item xs={6}>
         <Link to='/user-form'>
-          New User
+            <Button variant="contained" color="primary">
+              New User
+            </Button>
         </Link>
-        <ul>
-            {data.map((user: any) => {
-              return(
-                <div>
-                  <Link to={"/user-profile/:"+ user.id}>
-                    <li key={user.id} onClick={()=>props.onClickHandler(user)}>
-                      {user.firstName} 
-                    </li>
-                  </Link>
-                  <DeleteIcon onClick={()=>remove(user.id)}/>
-                </div>
-              )})
-            }
-        </ul>
-        </div>
-      </div>
+      </Grid>
+      <Grid item xs={6}>
+      {data.map((user: any) => {
+        return(
+          <Grid container justify="center" alignItems="center">
+              <Grid item xs={2}> 
+                <Link to={"/user-profile/:"+ user.id}>
+                  <ListItemText key={user.id} onClick={()=>props.onClickHandler(user)}>
+                    {user.firstName + " " + user.lastName} 
+                  </ListItemText>
+                </Link>
+              </Grid>
+              <Grid item xs={2}>
+                <DeleteIcon onClick={()=>remove(user.id)}/>
+              </Grid>
+          </Grid>
+        )})
+      }
+      </Grid>
+    </Grid>
   );
 }
 

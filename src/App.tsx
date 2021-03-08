@@ -23,11 +23,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Switch>
-            <div className="App">
               <Route exact path="/" render={()=> (<UserList onClickHandler={openUser}/>)}/>
               <Route path={"/user-profile/:id"} render={() => (<User selectedUser={selectedUser} selectedUserID={selectedUserID} />)}/>
               <Route path="/user-form" component={UserForm}/>
-            </div>
           </Switch>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
