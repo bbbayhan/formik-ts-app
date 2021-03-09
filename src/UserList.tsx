@@ -1,23 +1,16 @@
 import React from 'react';
 import { Link} from "react-router-dom";
-import './App.css';
 import {useQuery, useMutation, useQueryClient} from 'react-query';
 import { Button, Grid, ListItemText } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-import axios from 'axios';
 
+import './App.css';
+import { fetchUsers, deleteUser } from "./api";
 
 function UserList(props: any) {
   const queryClient = useQueryClient();
 
-  const { data=[] } = useQuery("fetchUsers", async () => {
-      const { data } =  await axios.get("http://localhost:5000/users/")
-      return data
-    }, { cacheTime: Infinity });
-
-  const deleteUser = async (id: any) =>{
-    return await axios.delete("http://localhost:5000/users/" + id);
-  }
+  const { data=[] } = useQuery("fetchUsers", fetchUsers, { cacheTime: Infinity });
 
   const { mutateAsync } = useMutation(deleteUser);
 

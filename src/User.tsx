@@ -19,7 +19,11 @@ function User(props:any) {
 
   const handleSubmit = async(e: any) => {
     await axios.patch("http://localhost:5000/users/" + id,
-        {[e]: value}
+        {[e]: value}, {
+          headers: {
+            "Test-Header": "test"
+          }
+        }
     );
   } 
 

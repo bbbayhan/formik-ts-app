@@ -34,9 +34,14 @@ function UserForm() {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = validationSchema[activeStep];
+  const token = 'token';
 
   const submitForm = async(values: any, actions: any) => {
-    await axios.post('http://localhost:5000/users/', values);
+    await axios.post('http://localhost:5000/users/', values, {
+      headers: {
+        "Authorization": `${token}`
+      }
+    });
     alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
