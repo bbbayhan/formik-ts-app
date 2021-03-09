@@ -8,7 +8,7 @@ import SecondPage from "./forms/SecondPage";
 import ThirdPage from "./forms/ThirdPage";
 import ForthPage from "./forms/ForthPage";
 import {validationSchema} from "./validations";
-import UserList from "./UserList";
+import { Button } from '@material-ui/core';
 
 const steps = ['First Page', 'Second Page', 'Third Page'];
 const formId = "form";
@@ -22,7 +22,12 @@ const renderStepContent = (step: number, handleChange:any, values: any) => {
     case 2:
       return <ThirdPage handleChange={handleChange} values={values} />; 
     default:
-      return <Link to="/" component={UserList}></Link>;  }
+      return (<Link to='/'>
+          <Button variant="contained" color="primary">
+            Show User list
+          </Button>
+        </Link>);
+    }
 }
 
 function UserForm() {
@@ -73,8 +78,11 @@ function UserForm() {
                   <button className="previous" type="button" onClick={handleBack}>&laquo;</button>
                 )}
               {renderStepContent(activeStep, handleChange, values)}
+              {console.log(activeStep)}
               {isLastStep? 
                 <ForthPage/> : 
+                activeStep===3 ?
+                "":
                 <button
                   disabled={isSubmitting}
                   className="next"

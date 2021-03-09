@@ -1,22 +1,16 @@
 import React, {useState} from 'react';
-import { Input, Grid, InputLabel, InputAdornment } from '@material-ui/core';
+import { Input, Grid, InputLabel, InputAdornment,Button } from '@material-ui/core';
+import {Link} from "react-router-dom";
 import axios from 'axios';
-import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
-
 
 import './App.css';
 
 
 function User(props:any) {
 
-  const [disabled, setDisabled] = useState(true);
   const [id, setId] = useState(0);
   const [value, setValue] = useState("");
-  
-  const handleDisabled = (e: any) => {
-    setDisabled(false);
-  }
   
   const handleChange = (e: any) => {
     setId(e.target.id);
@@ -32,11 +26,11 @@ function User(props:any) {
 
   return(
   <div className="App">
-  <Grid container spacing={3}>
+  <Grid container spacing={3} justify="center">
     {Object.entries(props.selectedUser).map((element: any)=>{
     return(
       <>
-        <Grid item xs={12}>
+        <Grid item xs={8}>
         <InputLabel shrink>{element[0]}</InputLabel>
           <Input
             id={props.selectedUserID}
@@ -44,11 +38,9 @@ function User(props:any) {
             name={element[0]}
             type="text"
             fullWidth
-            disabled={disabled}
             onChange={handleChange}
             endAdornment={
               <InputAdornment position="start">
-                <EditIcon onClick={handleDisabled}/>
                 <DoneIcon onClick={()=>handleSubmit(element[0])}/>
               </InputAdornment>
             }
@@ -56,8 +48,15 @@ function User(props:any) {
           </Grid>
       </>)}
       )}
+      <Grid item xs={8}>
+        <Link to='/'>
+          <Button variant="contained" color="primary">
+            Back
+          </Button>
+        </Link>
       </Grid>
-    </div>);
+    </Grid>
+  </div>);
 }
 
 export default User;
