@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {Form, Formik} from 'formik';
+import GenericForm from "./forms/Form";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import './App.css';
-import FirstPage from "./forms/FirstPage";
-import SecondPage from "./forms/SecondPage";
-import ThirdPage from "./forms/ThirdPage";
+import {data, secondData, thirdData} from './data';
 import ForthPage from "./forms/ForthPage";
 import {validationSchema} from "./validations";
 import { Button } from '@material-ui/core';
@@ -16,11 +15,11 @@ const formId = "form";
 const renderStepContent = (step: number, handleChange:any, values: any) => {
   switch (step) {
     case 0:
-      return <FirstPage handleChange={handleChange} values={values}/>;
+      return <GenericForm data={data} handleChange={handleChange} values={values}/>;
     case 1:
-      return <SecondPage handleChange={handleChange} values={values} />;
+      return <GenericForm data={secondData} handleChange={handleChange} values={values} />;
     case 2:
-      return <ThirdPage handleChange={handleChange} values={values} />; 
+      return <GenericForm data={thirdData} handleChange={handleChange} values={values} />; 
     default:
       return (<Link to='/'>
           <Button variant="contained" color="primary">

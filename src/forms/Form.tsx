@@ -1,35 +1,40 @@
 import '../App.css';
 import { getIn } from 'formik';
 import { TextField, Grid } from '@material-ui/core';
-import {thirdData} from '../data';
 import { renderHelperText } from "../helpers";
 
+interface Data {
+    id: any,
+    text:any,
+    type: any,
+}
 
-function ThirdPage(props: any) {
-    return(
-      <div className="App">
-      <Grid container spacing={3}>
-    {thirdData.map(({id, text, type}) => {
+function Form(props: any){
+    return (
+    <div className="App">
+    <Grid container spacing={3}>
+    {props.data.map(({id, text, type} : Data) => {
         return (
           <>
           <Grid item xs={12}>    
           <TextField
             id={id}
-            label={text}
             fullWidth
+            label={text}
             name={id}
             type={type}
             onChange={props.handleChange}
-            value={getIn(props.values, id)}
             helperText={renderHelperText(id)}
+            value={getIn(props.values, id)}
           />
           </Grid>
           </>
         );
-      })}
-      </Grid>
-      </div>
+      })
+    }
+    </Grid>
+    </div> 
     );
 }
 
-export default ThirdPage;
+export default Form;
