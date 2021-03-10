@@ -14,3 +14,12 @@ export const fetchUsers = async () => {
 export const deleteUser = async (id: any) =>{
     return await axios.delete("http://localhost:5000/users/" + id);
 }
+
+export const fetchCategories = async (id : any) => {
+  const { data } =  await axios.get("http://localhost:5000/categories/"+id, {
+    headers: {
+      "Authorization": `${accessToken}`
+    }
+  })
+  return data;
+}

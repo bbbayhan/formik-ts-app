@@ -82,7 +82,6 @@ function UserForm() {
                   <button className="previous" type="button" onClick={handleBack}>&laquo;</button>
                 )}
               {renderStepContent(activeStep, handleChange, values)}
-              {console.log(activeStep)}
               {isLastStep? 
                 <ForthPage/> : 
                 activeStep===3 ?

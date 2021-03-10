@@ -1,52 +1,48 @@
 import React from 'react';
 import { Link} from "react-router-dom";
-import {useQuery, useMutation, useQueryClient} from 'react-query';
-import { Button, Grid, ListItemText } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {useQuery} from 'react-query';
+import { TableHead, TableCell, TableRow, Paper, TableBody, TableContainer, Button, Table  } from '@material-ui/core';
+
+import UserRow from "./UserRow";
 
 import './App.css';
-import { fetchUsers, deleteUser } from "./api";
+import { fetchUsers } from "./api";
 
 function UserList(props: any) {
-  const queryClient = useQueryClient();
 
   const { data=[] } = useQuery("fetchUsers", fetchUsers, { cacheTime: Infinity });
 
-  const { mutateAsync } = useMutation(deleteUser);
-
-  const remove = async (id: any) => {
-    await mutateAsync(id);
-    queryClient.invalidateQueries("fetchUsers");
-  }
-
+ 
   return (
-    <Grid container direction="row-reverse" >
-      <Grid item xs={6}>
-        <Link to='/user-form'>
-            <Button variant="contained" color="primary">
-              New User
-            </Button>
-        </Link>
-      </Grid>
-      <Grid item xs={6}>
-      {data.map((user: any) => {
-        return(
-          <Grid container justify="center" alignItems="center">
-              <Grid item xs={2}> 
-                <Link to={"/user-profile/:"+ user.id}>
-                  <ListItemText key={user.id} onClick={()=>props.onClickHandler(user)}>
-                    {user.firstName + " " + user.lastName} 
-                  </ListItemText>
-                </Link>
-              </Grid>
-              <Grid item xs={2}>
-                <DeleteIcon onClick={()=>remove(user.id)}/>
-              </Grid>
-          </Grid>
-        )})
-      }
-      </Grid>
-    </Grid>
+    <div>
+    <TableContainer component={Paper}>
+    <Table aria-label="collapsible table">
+      <TableHead>
+          <TableRow>
+            <TableCell>First Name</TableCell>
+            <TableCell align="right">Last Name</TableCell>
+            <TableCell align="right">Email</TableCell>
+            <TableCell align="right">Age</TableCell>
+            <TableCell align="right">Birthday</TableCell>
+            <TableCell align="right">Company Name</TableCell>
+            <TableCell align="right">Company Year</TableCell>
+            <TableCell align="right">
+              <Link to='/user-form'>
+                <Button variant="contained" color="primary">
+                  New User
+                </Button>
+              </Link>
+            </TableCell>
+          </TableRow>
+      </TableHead>
+      <TableBody>
+      {data.map((user: any) =>(
+        <UserRow key={user.id} user={user}/>
+      ))}
+      </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
   );
 }
 

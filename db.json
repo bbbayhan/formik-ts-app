@@ -8,6 +8,16 @@
       "birthday": "12092021",
       "companyName": "hello",
       "companyYear": "2000",
+      "id": 1
+    },
+    {
+      "firstName": "Burcu",
+      "lastName": "Bayhan",
+      "email": "bestebbayhan@gmail.com",
+      "age": "20",
+      "birthday": "12092021",
+      "companyName": "hello",
+      "companyYear": "2000",
       "id": 2
     },
     {
@@ -51,26 +61,6 @@
       "id": 6
     },
     {
-      "firstName": "Beste",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 7
-    },
-    {
-      "firstName": "Beste",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 8
-    },
-    {
       "firstName": "Beste4",
       "lastName": "Bayhan",
       "email": "bestebbayhan@gmail.com",
@@ -81,16 +71,6 @@
       "id": 9
     },
     {
-      "firstName": "Beste5",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 10
-    },
-    {
       "firstName": "Beste6",
       "lastName": "Bayhan",
       "email": "bestebbayhan@gmail.com",
@@ -99,26 +79,28 @@
       "companyName": "hello",
       "companyYear": "2000",
       "id": 11
+    }
+  ],
+  "categories": [
+    {
+      "name": "category1",
+      "id": 1
     },
     {
-      "firstName": "Beste7",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 12
+      "name": "category2",
+      "id": 2
     },
     {
-      "firstName": "Beste8",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 13
+      "name": "category3",
+      "id": 3
+    },
+    {
+      "name": "category4",
+      "id": 4
+    },
+    {
+      "name": "category5",
+      "id": 5
     }
   ]
 }
