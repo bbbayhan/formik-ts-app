@@ -1,84 +1,14 @@
 {
   "users": [
     {
-      "firstName": "Burcu",
+      "firstName": "Burcu123123123",
       "lastName": "Bayhan",
       "email": "bestebbayhan@gmail.com",
       "age": "20",
       "birthday": "12092021",
-      "companyName": "hello",
+      "companyName": "apiumhub",
       "companyYear": "2000",
       "id": 1
-    },
-    {
-      "firstName": "Burcu",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 2
-    },
-    {
-      "firstName": "Beste1",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 3
-    },
-    {
-      "firstName": "Beste",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 4
-    },
-    {
-      "firstName": "Beste2",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 5
-    },
-    {
-      "firstName": "Beste3",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 6
-    },
-    {
-      "firstName": "Beste4",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 9
-    },
-    {
-      "firstName": "Beste6",
-      "lastName": "Bayhan",
-      "email": "bestebbayhan@gmail.com",
-      "age": "20",
-      "birthday": "12092021",
-      "companyName": "hello",
-      "companyYear": "2000",
-      "id": 11
     }
   ],
   "categories": [

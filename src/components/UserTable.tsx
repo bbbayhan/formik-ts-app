@@ -5,13 +5,12 @@ import { TableHead, TableCell, TableRow, Paper, TableBody, TableContainer, Butto
 
 import UserRow from "./UserRow";
 
-import './App.css';
-import { fetchUsers } from "./api";
+import '../App.css';
+import { fetchUsers } from "../api";
 
-function UserList(props: any) {
+function UserTable(props: any) {
 
   const { data=[] } = useQuery("fetchUsers", fetchUsers, { cacheTime: Infinity });
-
  
   return (
     <div>
@@ -37,7 +36,7 @@ function UserList(props: any) {
       </TableHead>
       <TableBody>
       {data.map((user: any) =>(
-        <UserRow key={user.id} user={user}/>
+        <UserRow key={user.id} user={user} onClickHandler={props.onClickHandler}/>
       ))}
       </TableBody>
       </Table>
@@ -46,4 +45,4 @@ function UserList(props: any) {
   );
 }
 
-export default UserList;
+export default UserTable;

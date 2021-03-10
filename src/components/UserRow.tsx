@@ -9,7 +9,7 @@ import {useQueryClient} from 'react-query';
 import {TableCell, TableRow, IconButton,  Collapse, Box  } from '@material-ui/core';
 import { useMutation} from 'react-query';
 
-import { deleteUser } from "./api";
+import { deleteUser } from "../api";
 
 function UserRow (props: any){
     const [open, setOpen] =useState(false);

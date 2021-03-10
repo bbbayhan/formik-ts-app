@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Form, Formik} from 'formik';
-import GenericForm from "./forms/Form";
+import GenericForm from "./Form";
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import './App.css';
-import {data, secondData, thirdData} from './data';
-import ForthPage from "./forms/ForthPage";
-import {validationSchema} from "./validations";
+import '../App.css';
+import {data, secondData, thirdData} from '../data';
+import ForthPage from "./ForthPage";
+import {validationSchema} from "../validations";
 import { Button } from '@material-ui/core';
 
 const steps = ['First Page', 'Second Page', 'Third Page'];

@@ -2,8 +2,8 @@ import React from 'react';
 import {useQuery } from 'react-query';
 import { TableBody, TableCell, TableRow, TableHead, Table} from '@material-ui/core';
 
-import './App.css';
-import {fetchCategories} from "./api";
+import '../App.css';
+import {fetchCategories} from "../api";
 
 function UserCategories(props: {id: any}) {
 
