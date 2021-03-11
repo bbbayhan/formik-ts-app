@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useQuery } from 'react-query';
 import { Input, Grid, InputLabel,Button } from '@material-ui/core';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {fetchUsersById} from "../api";
 import axios from 'axios';
 
@@ -9,8 +9,10 @@ import '../App.css';
 
 
 function User(props:any) {
+  const location = useLocation();
+  const url = location.pathname;
 
-  const { data=[] } = useQuery("fetchUsers", ()=>fetchUsersById(props.selectedUserID), { cacheTime: Infinity });
+  const { data=[] } = useQuery(["fetchUsersById", url], ()=>fetchUsersById(url));
   const [newArray, setNewArray]= useState(data);
   
   const handleChange = (e: any) => {
@@ -32,7 +34,7 @@ function User(props:any) {
   return(
   <div className="App">
   <Grid container spacing={3} justify="center">
-    {Object.entries(props.selectedUser).map((element: any)=>{
+    {Object.entries(data).map((element: any)=>{
     return(
       <>
         <Grid item xs={8}>

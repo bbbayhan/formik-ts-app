@@ -38,8 +38,8 @@ function UserRow (props: any){
             <TableCell align="right">{props.user.companyName}</TableCell>
             <TableCell align="right">{props.user.companyYear}</TableCell>
             <DeleteIcon onClick={()=>remove(props.user.id)}/>
-            <Link to={"/user-profile/:"+ props.user.id}>
-            <EditIcon onClick={()=>props.onClickHandler(props.user)}/>
+            <Link to={"/users/"+ props.user.id}>
+            <EditIcon/>
             </Link>  
         </TableRow>
         <TableRow>

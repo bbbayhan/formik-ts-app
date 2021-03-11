@@ -57,7 +57,7 @@ function UserTable(props: any) {
         ))
       :
       data.map((user: any) =>(
-        <UserRow key={user.id} user={user} onClickHandler={props.onClickHandler}/>
+        <UserRow key={user.id} user={user}/>
       ))}
       </TableBody>
       </Table>
