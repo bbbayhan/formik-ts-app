@@ -20,6 +20,15 @@ export const fetchUsersById = async (id: any) => {
   return data;
 }
 
+export const fetchUsersByFilter = async (filterValue: any) => {  
+  const { data } =  await axios.get("http://localhost:5000/users/" , {
+    headers: {
+      "Authorization": `${accessToken}`
+    },
+  });
+  return data.filter((item:any)=>item["firstName"].includes(filterValue));
+}
+
 export const deleteUser = async (id: any) =>{
     return await axios.delete("http://localhost:5000/users/" + id);
 }

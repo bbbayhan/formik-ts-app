@@ -5,9 +5,8 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import UserCategories from "./UserCategories";
 import { Link} from "react-router-dom";
-import {useQueryClient} from 'react-query';
 import {TableCell, TableRow, IconButton,  Collapse, Box  } from '@material-ui/core';
-import { useMutation} from 'react-query';
+import { useMutation, useQueryClient} from 'react-query';
 
 import { deleteUser } from "../api";
 
