@@ -16,17 +16,16 @@ function User(props:any) {
   const handleChange = (e: any) => {
     const key = e.target.id;
     setNewArray({...data, [key]: e.target.value});
-    console.log("new",newArray);
   } 
 
   const handleSubmit = async() => {
-    await axios.put("http://localhost:5000/users/" + props.selectedUserID,
+    await axios.patch("http://localhost:5000/users/" + props.selectedUserID,
         newArray, {
           headers: {
             "Test-Header": "test"
           }
         }
-    );
+    ); 
   } 
 
 
@@ -56,9 +55,9 @@ function User(props:any) {
             </Button>
           </Link>
       </Grid>
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
-        Submit
-      </Button>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
     </Grid>
   </div>);
 }
