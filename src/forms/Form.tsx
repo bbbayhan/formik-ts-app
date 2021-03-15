@@ -5,8 +5,8 @@ import { renderHelperText } from "../helpers";
 
 interface FormData {
     id: any,
-    text:any,
-    type: any,
+    text:string,
+    type: string,
 }
 
 function Form(props: any){

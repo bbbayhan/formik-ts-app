@@ -7,6 +7,17 @@ import {fetchUsersById, updateUser} from "../api";
 import UpdateModal from './UpdateModal';
 import '../App.css';
 
+interface Data {
+  "firstName": string,
+  "lastName": string,
+  "email": string,
+  "age": string,
+  "birthday": string,
+  "companyName": string,
+  "companyYear": string,
+  "id": number
+}
+
 
 function User(props:any) {
   const location = useLocation();
@@ -30,15 +41,15 @@ function User(props:any) {
   return(
   <div className="App">
   <Grid container spacing={3} justify="center">
-    {Object.entries(data).map((element: any)=>{
+    {Object.entries(data as Data).map(([key,value])=>{
     return(
       <>
         <Grid item xs={8}>
-        <InputLabel shrink>{element[0]}</InputLabel>
+        <InputLabel shrink>{key}</InputLabel>
           <Input
-            id={element[0]}
-            defaultValue={element[1]}
-            name={element[0]}
+            id={key}
+            defaultValue={value}
+            name={key}
             type="text"
             fullWidth
             onChange={handleChange}
