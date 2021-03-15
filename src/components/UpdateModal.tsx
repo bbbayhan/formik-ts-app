@@ -6,17 +6,13 @@ import '../App.css';
 
 function UpdateModal(props: any) {
 
-    const handleClose = (e: any) =>{
-        e.preventDefault();
-        <Link to='/'/>;
-    }
-
     return (
-    <Dialog open={props.open} onClose={handleClose}>
+    <Dialog open={props.open}>
         <DialogContent>
             <DialogContentText>
                 User Info is updated
             </DialogContentText>
+            <Link to='/'> Return to User table</Link>
         </DialogContent>
     </Dialog>
     );
