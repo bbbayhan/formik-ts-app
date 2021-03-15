@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider} from "react-query";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { ReactQueryDevtools,  } from 'react-query-devtools'
+import { ReactQueryDevtools } from 'react-query-devtools'
 import './App.css';
 import User from "./components/User";
 import UserTable from './components/UserTable';
@@ -22,6 +22,7 @@ function App() {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+
     );
 }
 

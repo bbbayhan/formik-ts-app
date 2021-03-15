@@ -20,13 +20,18 @@ export const fetchUsersById = async (url:any) => {
   return data;
 }
 
-export const fetchUsersByFilter = async (filterValue: any) => {  
-  const { data } =  await axios.get("http://localhost:5000/users/" , {
-    headers: {
-      "Authorization": `${accessToken}`
-    },
-  });
-  return data.filter((item:any)=>item["firstName"].includes(filterValue));
+export const fetchUsersByFilter = async (param: any) => {
+  if(param){  
+    const { data } =  await axios.get("http://localhost:5000/users/" , {
+      headers: {
+        "Authorization": `${accessToken}`
+      },
+      params: {
+        "firstName": param
+      }
+    });
+  return data;
+  }
 }
 
 export const deleteUser = async (id: any) =>{

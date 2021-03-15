@@ -11,12 +11,13 @@ import '../App.css';
 import { fetchUsers, fetchUsersByFilter } from "../api";
 
 
+
 function UserTable(props: any) {
 
   const { data=[] } = useQuery("fetchUsers", fetchUsers, { cacheTime: Infinity });
   const [open, setOpen] = useState(false);
   const [param, setParam] =useState("");
-  const { data: filteredData } = useQuery("fetchUsersByFilter", ()=>fetchUsersByFilter(param), { cacheTime: Infinity });
+  const { data: filteredData } = useQuery(["fetchUsersByFilter", param], ()=>fetchUsersByFilter(param), {cacheTime: Infinity});
 
 
   const handleSubmit = async (param: any) => {
