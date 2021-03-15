@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {useQuery } from 'react-query';
 import { Input, Grid, InputLabel,Button } from '@material-ui/core';
 import {Link, useLocation} from "react-router-dom";
-import {fetchUsersById} from "../api";
-import axios from 'axios';
+import {fetchUsersById, updateUser} from "../api";
 
+import UpdateModal from './UpdateModal';
 import '../App.css';
 
 
@@ -12,6 +12,7 @@ function User(props:any) {
   const location = useLocation();
   const url = location.pathname;
 
+  const [open, setOpen] = useState(false);
   const { data=[] } = useQuery(["fetchUsersById", url], ()=>fetchUsersById(url));
   const [newArray, setNewArray]= useState(data);
   
@@ -21,13 +22,8 @@ function User(props:any) {
   } 
 
   const handleSubmit = async() => {
-    await axios.patch("http://localhost:5000/users/" + props.selectedUserID,
-        newArray, {
-          headers: {
-            "Test-Header": "test"
-          }
-        }
-    ); 
+    await updateUser(url, newArray);
+    setOpen(true);
   } 
 
 
@@ -50,6 +46,7 @@ function User(props:any) {
           </Grid>
       </>)}
       )}
+      <UpdateModal open={open}/>;
       <Grid item xs={8}>
           <Link to='/'>
             <Button variant="contained" color="primary">

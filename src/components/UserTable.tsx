@@ -33,7 +33,7 @@ function UserTable(props: any) {
     <Table aria-label="collapsible table">
       <TableHead>
           <TableRow>
-            <TableCell>First Name</TableCell>
+            <TableCell align="right">First Name</TableCell>
             <TableCell align="right">Last Name</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Age</TableCell>
@@ -47,7 +47,9 @@ function UserTable(props: any) {
                 </Button>
               </Link>
             </TableCell>
+            <TableCell align="right">
             <FilterListIcon onClick={()=>setOpen(true)}/>
+            </TableCell>
           </TableRow>
       </TableHead>
       <TableBody>

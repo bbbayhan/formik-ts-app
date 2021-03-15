@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {Form, Formik} from 'formik';
 import GenericForm from "./Form";
 import {Link} from "react-router-dom";
-import axios from 'axios';
 import '../App.css';
 import {data, secondData, thirdData} from '../data';
 import ForthPage from "./ForthPage";
 import {validationSchema} from "../validations";
 import { Button } from '@material-ui/core';
+import { postUserData } from '../api';
 
 const steps = ['First Page', 'Second Page', 'Third Page'];
 const formId = "form";
@@ -33,14 +33,9 @@ function UserForm() {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = validationSchema[activeStep];
-  const token = 'token';
 
   const submitForm = async(values: any, actions: any) => {
-    await axios.post('http://localhost:5000/users/', values, {
-      headers: {
-        "Authorization": `${token}`
-      }
-    });
+    postUserData(values);
     alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
