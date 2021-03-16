@@ -27,7 +27,13 @@ export const fetchUsersByFilter = async (param: any) => {
         "Authorization": `${accessToken}`
       },
       params: {
-        "firstName": param
+        firstName: param.firstName,
+        lastName: param.lastName,
+        email: param.email,
+        age: param.age,
+        birthday: param.birthday,
+        companyName: param.companyName,
+        companyYear: param.companyYear,
       }
     });
   return data;
