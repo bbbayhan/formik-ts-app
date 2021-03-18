@@ -4,16 +4,23 @@ import { TextField, Grid } from '@material-ui/core';
 import { renderHelperText } from "../helpers";
 
 interface FormData {
-    id: any,
+    id: string,
     text:string,
     type: string,
 }
 
-function Form(props: any){
+interface FormProps {
+  data: any,
+  handleChange:any,
+  values: Object,
+}
+
+function Form({data, handleChange, values} : FormProps){
     return (
     <div className="App">
     <Grid container spacing={3}>
-    {props.data.map(({id, text, type} : FormData) => {
+    {data.map(({id, text, type} : FormData) => {
+      console.log(typeof data);
         return (
           <>
           <Grid item xs={12}>    
@@ -23,9 +30,9 @@ function Form(props: any){
             label={text}
             name={id}
             type={type}
-            onChange={props.handleChange}
+            onChange={handleChange}
             helperText={renderHelperText(id)}
-            value={getIn(props.values, id)}
+            value={getIn(values, id)}
           />
           </Grid>
           </>

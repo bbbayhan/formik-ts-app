@@ -10,12 +10,25 @@ import { useMutation, useQueryClient} from 'react-query';
 
 import { deleteUser } from "../api";
 
-function UserRow (props: any){
+interface UserRowProps {
+    user: {
+        firstName: string,
+        lastName: string,
+        email:string,
+        age: number, 
+        birthday: string, 
+        companyName: string,
+        companyYear: string,
+        id: string
+    }
+}
+
+function UserRow ({ user: {firstName, lastName, email, age, birthday, companyName, companyYear, id}}: UserRowProps){
     const [open, setOpen] =useState(false);
     const queryClient = useQueryClient();
     const { mutateAsync } = useMutation(deleteUser);
 
-    const remove = async (id: any) => {
+    const remove = async (id: string) => {
       await mutateAsync(id);
       queryClient.invalidateQueries("fetchUsers");
     }
@@ -29,16 +42,16 @@ function UserRow (props: any){
             </IconButton>
             </TableCell>
             <TableCell component="th" scope="row">
-                {props.user.firstName}
+                {firstName}
             </TableCell>
-            <TableCell align="right">{props.user.lastName}</TableCell>
-            <TableCell align="right">{props.user.email}</TableCell>
-            <TableCell align="right">{props.user.age}</TableCell>
-            <TableCell align="right">{props.user.birthday}</TableCell>
-            <TableCell align="right">{props.user.companyName}</TableCell>
-            <TableCell align="right">{props.user.companyYear}</TableCell>
-            <DeleteIcon onClick={()=>remove(props.user.id)}/>
-            <Link to={"/users/"+ props.user.id}>
+            <TableCell align="right">{lastName}</TableCell>
+            <TableCell align="right">{email}</TableCell>
+            <TableCell align="right">{age}</TableCell>
+            <TableCell align="right">{birthday}</TableCell>
+            <TableCell align="right">{companyName}</TableCell>
+            <TableCell align="right">{companyYear}</TableCell>
+            <DeleteIcon onClick={()=>remove(id)}/>
+            <Link to={"/users/"+ id}>
             <EditIcon/>
             </Link>  
         </TableRow>
@@ -46,7 +59,7 @@ function UserRow (props: any){
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>                  
-                <UserCategories id={props.user.id}/>
+                <UserCategories id={id}/>
             </Box>
             </Collapse>
         </TableCell>

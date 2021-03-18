@@ -4,10 +4,14 @@ import { Dialog,DialogContent, DialogContentText } from '@material-ui/core';
 
 import '../App.css';
 
-function UpdateModal(props: any) {
+interface UpdateModalProps {
+    open: boolean
+}
+
+function UpdateModal({open}: UpdateModalProps) {
 
     return (
-    <Dialog open={props.open}>
+    <Dialog open={open}>
         <DialogContent>
             <DialogContentText>
                 User Info is updated

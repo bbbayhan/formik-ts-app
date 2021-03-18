@@ -12,7 +12,7 @@ import { postUserData } from '../api';
 const steps = ['First Page', 'Second Page', 'Third Page'];
 const formId = "form";
 
-const renderStepContent = (step: number, handleChange:any, values: any) => {
+const renderStepContent = (step: number, handleChange:Function, values: Object) => {
   switch (step) {
     case 0:
       return <GenericForm data={data} handleChange={handleChange} values={values}/>;
@@ -34,14 +34,15 @@ function UserForm() {
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = validationSchema[activeStep];
 
-  const submitForm = async(values: any, actions: any) => {
+  const submitForm = async(values: Object, actions: any) => {
+    console.log(typeof actions);
     postUserData(values);
     alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
   }
 
-  const handleSubmit = (values: any, actions:any) =>{
+  const handleSubmit = (values: Object, actions:any) =>{
     if (isLastStep) {
       submitForm(values, actions);
     } else {

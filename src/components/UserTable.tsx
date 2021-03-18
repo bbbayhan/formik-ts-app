@@ -12,7 +12,7 @@ import { fetchUsers, fetchUsersByFilter } from "../api";
 
 
 
-function UserTable(props: any) {
+function UserTable() {
 
   const { data=[] } = useQuery("fetchUsers", fetchUsers, { cacheTime: Infinity });
   const [open, setOpen] = useState(false);
@@ -56,7 +56,7 @@ function UserTable(props: any) {
       <TableBody>
       {filteredData? 
         filteredData.map((user: any) =>(
-          <UserRow key={user.id} user={user} onClickHandler={props.onClickHandler}/>
+          <UserRow key={user.id} user={user}/>
         ))
       :
       data.map((user: any) =>(

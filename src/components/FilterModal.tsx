@@ -2,33 +2,26 @@ import React, {useState} from 'react';
 import { Input, InputLabel, Button, Dialog,DialogContent } from '@material-ui/core';
 
 import '../App.css';
-// interface Data {
-//     "firstName": string,
-//     "lastName": string,
-//     "email": string,
-//     "age": string,
-//     // "birthday": string,
-//     // "companyName": string,
-//     // "companyYear": string,
-//   }
 
-function FilterModal(props: any) {
+interface FilterType {
+    open : boolean,
+    onSubmit: Function
+}
+
+
+function FilterModal({open, onSubmit} : FilterType) {
 
     const [data, setData]= useState({});
 
-    const handleChange = (e: any) => {
-        const key = e.target.id;
-        setData({...data,[key]: e.target.value});
-    } 
+    const handleChange = (e: any) => setData({...data, [e.target.id]: e.target.value});
 
     const handleOnclick = (e: any) =>{
         e.preventDefault();
-        console.log("newFilter", data);
-        props.onSubmit(data);
+        onSubmit(data);
     }
 
     return (
-    <Dialog open={props.open}>
+    <Dialog open={open}>
         <DialogContent>
         <InputLabel shrink>First Name</InputLabel>
         <Input

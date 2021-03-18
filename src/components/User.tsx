@@ -19,7 +19,7 @@ interface Data {
 }
 
 
-function User(props:any) {
+function User() {
   const location = useLocation();
   const url = location.pathname;
 

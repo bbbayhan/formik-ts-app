@@ -11,7 +11,7 @@ export const fetchUsers = async () => {
     return data;
 }
 
-export const fetchUsersById = async (url:any) => {
+export const fetchUsersById = async (url:string) => {
   const { data } =  await axios.get("http://localhost:5000"+url, {
     headers: {
       "Authorization": `${accessToken}`
@@ -40,11 +40,11 @@ export const fetchUsersByFilter = async (param: any) => {
   }
 }
 
-export const deleteUser = async (id: any) =>{
+export const deleteUser = async (id: string) =>{
     return await axios.delete("http://localhost:5000/users/" + id);
 }
 
-export const updateUser = async (url: any, newArray: any) => {
+export const updateUser = async (url: string, newArray: any) => {
   return await axios.patch("http://localhost:5000" + url,
         newArray, {
           headers: {
@@ -62,7 +62,7 @@ export const postUserData = async (values: any) => {
   });
 }
 
-export const fetchCategories = async (id : any) => {
+export const fetchCategories = async (id : string) => {
   const { data } =  await axios.get("http://localhost:5000/categories/"+id, {
     headers: {
       "Authorization": `${accessToken}`

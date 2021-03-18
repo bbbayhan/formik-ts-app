@@ -5,9 +5,9 @@ import { TableBody, TableCell, TableRow, TableHead, Table} from '@material-ui/co
 import '../App.css';
 import {fetchCategories} from "../api";
 
-function UserCategories(props: {id: any}) {
+function UserCategories({id} : {id: string}) {
 
-  const { data=[] } = useQuery("fetchCategories", ()=>fetchCategories(props.id), { cacheTime: Infinity });
+  const { data=[] } = useQuery("fetchCategories", ()=>fetchCategories(id), { cacheTime: Infinity });
 
   return (
     <Table size="small" aria-label="purchases">
