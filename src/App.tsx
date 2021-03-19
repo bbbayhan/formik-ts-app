@@ -16,13 +16,12 @@ function App() {
       <BrowserRouter>
         <Switch>
             <Route exact path="/" render={()=> (<UserTable/>)}/>
-            <Route path={"/users/:id"} render={() => (<User/>)}/>
+            <Route path="/users/:id" render={() => (<User/>)}/>
             <Route path="/user-form" component={UserForm}/>
           </Switch>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-
     );
 }
 

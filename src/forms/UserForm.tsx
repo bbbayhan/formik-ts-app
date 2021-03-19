@@ -35,7 +35,6 @@ function UserForm() {
   const currentValidationSchema = validationSchema[activeStep];
 
   const submitForm = async(values: Object, actions: any) => {
-    console.log(typeof actions);
     postUserData(values);
     alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);

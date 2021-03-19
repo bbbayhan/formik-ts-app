@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import {useQuery } from 'react-query';
+import {useState} from 'react';
+import {useQuery, useQueryClient } from 'react-query';
 import { Input, Grid, InputLabel,Button } from '@material-ui/core';
-import {Link, useLocation} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {fetchUsersById, updateUser} from "../api";
 
 import UpdateModal from './UpdateModal';
 import '../App.css';
-
 interface Data {
   "firstName": string,
   "lastName": string,
@@ -18,13 +17,21 @@ interface Data {
   "id": number
 }
 
+interface ParamTypes {
+  id: string;
+}
 
 function User() {
-  const location = useLocation();
-  const url = location.pathname;
+  const queryClient = useQueryClient();
+  const {id} = useParams<ParamTypes>();
+
 
   const [open, setOpen] = useState(false);
-  const { data=[] } = useQuery(["fetchUsersById", url], ()=>fetchUsersById(url));
+  const { data=[] } = useQuery(["fetchUsers", id], ()=>fetchUsersById(id), { 
+    initialData: () => {
+      return queryClient.getQueryData<any>('fetchUsers')?.find((d: any) => d.id === parseInt(id));
+    },
+  });
   const [newArray, setNewArray]= useState(data);
   
   const handleChange = (e: any) => {
@@ -33,7 +40,7 @@ function User() {
   } 
 
   const handleSubmit = async() => {
-    await updateUser(url, newArray);
+    await updateUser(id, newArray);
     setOpen(true);
   } 
 

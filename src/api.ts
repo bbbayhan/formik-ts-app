@@ -11,8 +11,8 @@ export const fetchUsers = async () => {
     return data;
 }
 
-export const fetchUsersById = async (url:string) => {
-  const { data } =  await axios.get("http://localhost:5000"+url, {
+export const fetchUsersById = async (id:string) => {
+  const { data } =  await axios.get("http://localhost:5000/users/"+id, {
     headers: {
       "Authorization": `${accessToken}`
     }

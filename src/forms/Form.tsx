@@ -20,7 +20,6 @@ function Form({data, handleChange, values} : FormProps){
     <div className="App">
     <Grid container spacing={3}>
     {data.map(({id, text, type} : FormData) => {
-      console.log(typeof data);
         return (
           <>
           <Grid item xs={12}>    
