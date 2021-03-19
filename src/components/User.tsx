@@ -14,7 +14,7 @@ interface Data {
   "birthday": string,
   "companyName": string,
   "companyYear": string,
-  "id": number
+  "id": string
 }
 
 interface ParamTypes {

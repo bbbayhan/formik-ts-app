@@ -44,8 +44,8 @@ export const deleteUser = async (id: string) =>{
     return await axios.delete("http://localhost:5000/users/" + id);
 }
 
-export const updateUser = async (url: string, newArray: any) => {
-  return await axios.patch("http://localhost:5000" + url,
+export const updateUser = async (id: string, newArray: any) => {
+  return await axios.patch("http://localhost:5000/users/" + id,
         newArray, {
           headers: {
             "Test-Header": "test"
