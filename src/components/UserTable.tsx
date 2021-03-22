@@ -43,7 +43,7 @@ function UserTable() {
             <TableCell align="right">Company Year</TableCell>
             <TableCell align="right">
               <Link to='/user-form'>
-                <Button variant="contained" id="new-user-button">
+                <Button variant="contained" data-cy="new-user-button">
                   New User
                 </Button>
               </Link>

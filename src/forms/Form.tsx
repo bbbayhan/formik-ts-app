@@ -25,6 +25,7 @@ function Form({data, handleChange, values} : FormProps){
           <Grid item xs={12}>    
           <TextField
             id={id}
+            data-cy={id}
             fullWidth
             label={text}
             name={id}

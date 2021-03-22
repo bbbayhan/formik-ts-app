@@ -22,7 +22,7 @@ const renderStepContent = (step: number, handleChange:Function, values: Object) 
       return <GenericForm data={thirdData} handleChange={handleChange} values={values} />; 
     default:
       return (<Link to='/'>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" data-cy="show-user-list-button">
             Show User list
           </Button>
         </Link>);

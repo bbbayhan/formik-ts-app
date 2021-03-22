@@ -13,7 +13,7 @@ export default function ForthPage() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" type="submit" onClick={() => setOpen(true)}>
+      <Button variant="outlined" data-cy="new-user-submit" color="primary" type="submit" onClick={() => setOpen(true)}>
         Submit
       </Button>
       <Dialog open={open} onClose={handleClose}>
