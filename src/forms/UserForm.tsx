@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {Form, Formik} from 'formik';
 import GenericForm from "./Form";
-import {Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import '../App.css';
 import {data, secondData, thirdData} from '../data';
 import ForthPage from "./ForthPage";
 import {validationSchema} from "../validations";
-import { Button } from '@material-ui/core';
 import { postUserData } from '../api';
 
 const steps = ['First Page', 'Second Page', 'Third Page'];
@@ -21,11 +20,7 @@ const renderStepContent = (step: number, handleChange:Function, values: Object) 
     case 2:
       return <GenericForm data={thirdData} handleChange={handleChange} values={values} />; 
     default:
-      return (<Link to='/'>
-          <Button variant="contained" color="primary" data-cy="show-user-list-button">
-            Show User list
-          </Button>
-        </Link>);
+      return <Redirect to='/'/>;
     }
 }
 
