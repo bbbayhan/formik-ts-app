@@ -1,22 +1,10 @@
 import {useState} from 'react';
 import {useQuery, useQueryClient } from 'react-query';
 import { Input, Grid, InputLabel,Button } from '@material-ui/core';
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, Redirect} from "react-router-dom";
 import {fetchUsersById, updateUser} from "../api";
-
-import UpdateModal from './UpdateModal';
+import { Data } from "../constants";
 import '../App.css';
-interface Data {
-  "firstName": string,
-  "lastName": string,
-  "email": string,
-  "age": string,
-  "birthday": string,
-  "companyName": string,
-  "companyYear": string,
-  "id": string
-}
-
 interface ParamTypes {
   id: string;
 }
@@ -24,7 +12,6 @@ interface ParamTypes {
 function User() {
   const queryClient = useQueryClient();
   const {id} = useParams<ParamTypes>();
-
 
   const [open, setOpen] = useState(false);
   const { data=[] } = useQuery(["fetchUsers", id], ()=>fetchUsersById(id), { 
@@ -43,7 +30,6 @@ function User() {
     await updateUser(id, newArray);
     setOpen(true);
   } 
-
 
   return(
   <div className="App">
@@ -64,17 +50,20 @@ function User() {
           </Grid>
       </>)}
       )}
-      <UpdateModal open={open}/>;
-      <Grid item xs={8}>
-          <Link to='/'>
-            <Button variant="contained" color="primary">
-              Back
-            </Button>
-          </Link>
-      </Grid>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
+      {open? <Redirect to="/"/> : 
+        <> 
+        <Grid item xs={8}>
+            <Link to='/'>
+              <Button variant="contained" color="primary">
+                Back
+              </Button>
+            </Link>
+        </Grid>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </>
+      }
     </Grid>
   </div>);
 }

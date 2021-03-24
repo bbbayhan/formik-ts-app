@@ -5,7 +5,7 @@ import { renderHelperText } from "../helpers";
 
 interface FormData {
     id: string,
-    text:string,
+    label:string,
     type: string,
 }
 
@@ -19,7 +19,7 @@ function Form({data, handleChange, values} : FormProps){
     return (
     <div className="App">
     <Grid container spacing={3}>
-    {data.map(({id, text, type} : FormData) => {
+    {data.map(({id, label, type} : FormData) => {
         return (
           <>
           <Grid item xs={12}>    
@@ -27,7 +27,7 @@ function Form({data, handleChange, values} : FormProps){
             id={id}
             data-cy={id}
             fullWidth
-            label={text}
+            label={label}
             name={id}
             type={type}
             onChange={handleChange}
